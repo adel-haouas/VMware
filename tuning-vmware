@@ -1,4 +1,3 @@
-
 ## increase the inactivity period before logout
 esxcli system settings advanced set -o /UserVars/ESXiShellTimeOut -i 3600
 esxcli system settings advanced set -o /UserVars/DcuiTimeOut -i 3600
