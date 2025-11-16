@@ -7,6 +7,12 @@ esxcli system ntp set --server "196.203.249.241"
 esxcli system ntp set --enabled true
 /etc/init.d/ntpd restart
 
+#Verification
+/etc/init.d/ntpd status   (expected output: running)
+esxcli system ntp get
+ntpq -p
+ntpq -c rv | grep offset
+
 ## increase the inactivity period before logout
 esxcli system settings advanced set -o /UserVars/ESXiShellTimeOut -i 3600
 esxcli system settings advanced set -o /UserVars/DcuiTimeOut -i 3600
