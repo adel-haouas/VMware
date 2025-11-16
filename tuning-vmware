@@ -1,3 +1,9 @@
+## configure ntp
+esxcli network firewall ruleset set -e true -r ntpClient
+esxcli system ntp set --server "196.203.249.241"
+esxcli system ntp set --enabled true
+/etc/init.d/ntpd restart
+
 ## increase the inactivity period before logout
 esxcli system settings advanced set -o /UserVars/ESXiShellTimeOut -i 3600
 esxcli system settings advanced set -o /UserVars/DcuiTimeOut -i 3600
