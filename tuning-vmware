@@ -1,3 +1,6 @@
+################################################
+##### On ESXi host ########################
+
 ## configure ntp
 esxcli network firewall ruleset set -e true -r ntpClient
 esxcli system ntp set --server "196.203.249.241"
@@ -14,9 +17,7 @@ esxcli system settings advanced set -o /UserVars/DcuiTimeOut -i 3600
 esxcli system settings advanced list -o /UserVars/ESXiShellTimeOut
 esxcli system settings advanced list -o /UserVars/DcuiTimeOut
 
-## activate RSA key-based SSH authentication in VMware ESXi 8 and vCenter
-
-#On ESXi host
+## activate RSA key-based SSH authentication in VMware ESXi 8
 ssh root@esxi_host
 mkdir -pv /etc/ssh/keys-root
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDhaPiyhEGRUH2cbeExS1zxAHUgXSpFx2u+p2B8HvR8d1ZQtAsfk1GfuwZHi1UcYNXbq0YVypxMCHLHqhBnzFVP0lhg2Pbt6rBCx3HDx7tSEAkWMyyCmGmSxTEOwQSANl+EMvSfiTBfQNZXsFJmKjOYbWqzVcBLGnmFqT9N61DYPrp2YoDWUQuT3gVyWTVO46Ta9CgC9fhguumRjtZFZ6qaPbX0B551+7NfhrjJbQxQ43j1I9yeiwU9lnGcpdhlo9dMnMHV/Di0EHXFdEs2rHtuNJqKjH7cFjKAsX5xprN35Jx1mo+TdfJyWfknBzn39Tk+j4qiYC5MReTbbWkqhc2b" >> /etc/ssh/keys-root/authorized_keys
@@ -28,7 +29,10 @@ PubkeyAuthentication yes
 EOF
 /etc/init.d/SSH restart
 
-#On vCenter
+################################################
+##### On vCenter ########################
+
+## activate RSA key-based SSH authentication in vCenter
 ssh root@vcenter_host
 
 mkdir -pv ~/.ssh
