@@ -12,4 +12,9 @@ esxcli network firewall ruleset set --ruleset-id snmp --allowed-all true
 esxcli network firewall ruleset set --ruleset-id snmp --enabled true
 /etc/init.d/snmpd restart
 
+#Verification
+esxcli system snmp get
+esxcli network firewall ruleset list | grep -iE "snmp|Enabled"
+
+
 ##Source: https://tylermade.net/2017/04/28/how-to-enable-snmp-monitoring-for-vmware-esxi-6-06-5/
